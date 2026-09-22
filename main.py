@@ -20,7 +20,7 @@ st.html(
         padding-right: 1rem !important;
         margin: 0 auto !important;
     }
-    /* 1. Center all headers and subheaders */
+    
     h1, h2, h3, h4, h5, h6 {
         text-align: center !important;
     }
@@ -72,7 +72,6 @@ if "levels" not in st.session_state:
     st.session_state.levels = {}
 
 # helper func's
-
 def read_audio(file_bytes):
     data, fs = sf.read(io.BytesIO(file_bytes), dtype="float32", always_2d=False)
     return data, fs
@@ -121,7 +120,6 @@ def process(x, fs, freqs_hz, gains_db, block=4096, hop=1024):
     norm[norm < 1e-8] = 1e-8
     out = out / norm
     return out[block:block + len(x)]
-
 
 def apply_elc_curve(samples, fs, freqs_hz, gains_db, block=4096, hop=1024):
     t0 = time.perf_counter()
@@ -203,11 +201,6 @@ if st.session_state.threshold or st.session_state.levels:
     ax.legend()
     ax.grid(True, which="both", alpha=0.3)
     st.pyplot(fig)
-
-if st.button("Reset measurements"):
-    st.session_state.threshold = {}
-    st.session_state.levels = {}
-    st.rerun()
 
 st.divider()
 
