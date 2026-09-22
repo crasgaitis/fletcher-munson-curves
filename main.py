@@ -221,6 +221,7 @@ if src == "Upload file":
     if up:
         audio_bytes = up.read()
 else:
+        st.write("'Airplane Mode' is an original rap composition I made before learning about audio equalization!")
         with open(DEMO_FILE, "rb") as f:
             audio_bytes = f.read()
         st.caption(f"Using demo file: {DEMO_FILE} (currently unequalized)")
