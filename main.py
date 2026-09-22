@@ -49,6 +49,7 @@ st.html(
         justify-content: center !important;
         width: 100% !important;
     }
+    
     </style>
     """
 )
@@ -135,7 +136,13 @@ def apply_elc_curve(samples, fs, freqs_hz, gains_db, block=4096, hop=1024):
 
 # streamlit app here
 
-st.title("ELC Equalizer")
+left_pad, content_col, right_pad = st.columns([1, 3, 1])
+with content_col:
+    title_col, logo_col = st.columns([1, 3], vertical_alignment="center")
+    with title_col:
+        st.image("LOGO.png", width=300)
+    with logo_col:
+        st.title("What the Fletch?!")
 
 # elc part 1
 st.header("1. Measure hearing contours")
